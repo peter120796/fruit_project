@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>اختبار الفاكهة والخضار 🍉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- شاشة اللوجو -->
+    <div id="logoScreen" class="logo-screen">
+        <img src="img/logo.png" class="logo-img" alt="Logo">
+    </div>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="mainContent" class="container hidden">
+        <h1 class="title">دور على اللى زيك 🍎🥒</h1>
+       
+        <div class="card fade-in">
+
+            <!-- الصورة العشوائية -->
+            <img id="fruitImage" src="" alt="" class="fruit-img" style="display:none;">
+        
+        
+            <!-- الجملة -->
+            <p id="message" class="message" style="display:none;">
+                قولي شكرا علشان ايريني قهرتني إني أعمل كدا 😂
+            </p>
+        
+            <!-- زرار الضغط -->
+            <button onclick="showRandomFruit()" class="btn">اضغط هنا</button>
+        
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
