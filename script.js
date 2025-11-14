@@ -1,4 +1,4 @@
-// === اسم الفاكهة + الصور ===
+// === Array الصور فقط ===
 const items = [
     "fruit_01.jpg",
     "fruit_02.jpg",
@@ -66,29 +66,52 @@ const items = [
     "fruit_64.jpg",
     "fruit_65.jpg"
 ];
-// === Function لاختيار صورة عشوائية ===
+
+// === عرض الصورة من التخزين لو موجودة ===
+window.onload = function () {
+    const savedFruit = localStorage.getItem("chosenFruit");
+
+    if (savedFruit) {
+        showSavedFruit(savedFruit);
+    }
+};
+
+// === Function لما الضغط يحصل لأول مرة ===
 function showRandomFruit() {
+    const savedFruit = localStorage.getItem("chosenFruit");
+
+    // لو الشخص عنده صورة محفوظة → امنع تغييرها
+    if (savedFruit) {
+        showSavedFruit(savedFruit);
+        return;
+    }
+
     const randomIndex = Math.floor(Math.random() * items.length);
     const chosenImg = items[randomIndex];
 
+    // خزّن الصور بعد أول مرة فقط
+    localStorage.setItem("chosenFruit", chosenImg);
+
+    showSavedFruit(chosenImg);
+}
+
+// === Function لعرض الصورة سواء كانت محفوظة أو جديدة ===
+function showSavedFruit(chosenImg) {
     const imgElement = document.getElementById("fruitImage");
     imgElement.src = "img/" + chosenImg;
     imgElement.style.display = "block";
 
-    // إخفاء الزرار بعد أول ضغطة
+    // إخفاء الزر
     document.querySelector(".btn").style.display = "none";
 
-    // اظهار الرسالة اللي تحت
+    // إظهار الرسالة + اللوجو
     document.getElementById("message").style.display = "block";
-
-    // اظهار لوجو tc بعد الضغط
     document.getElementById("tcLogo").style.display = "block";
 
-    // مفيش اسم
     document.getElementById("fruitName").innerText = "";
 }
 
-// === بعد اختفاء اللوجو → أظهر المحتوى ===
+// === إظهار المحتوى بعد اختفاء اللوجو ===
 setTimeout(() => {
     document.getElementById("mainContent").classList.remove("hidden");
 }, 2200);
